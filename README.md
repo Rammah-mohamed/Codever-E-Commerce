@@ -6,4 +6,4 @@
 ### 3- It's contains products list that the user can go to a specific product.
 ### 4- It's contains product page the user can see all information about a product and can increase and decrease the Quantity of specific product.
 ### 5- Its' contains cart page the the user can see all the products.
-## the live E-Commerce Website is Here: https://codever-ecommerce.netlify.app
+## The live E-Commerce Website is Here: https://codever-ecommerce.netlify.app
