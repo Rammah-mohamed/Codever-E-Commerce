@@ -4,6 +4,7 @@ import Announcement from "../components/Announcement"
 import Footer from "../components/Footer"
 import { PrimaryColor } from "../Variables";
 import { mobile } from "../responsive";
+import { useState } from "react";
 
 const Container = styled.div`
   width: 100%;
@@ -184,6 +185,7 @@ const Operation = styled.span`
   font-size: 35px;
   font-weight: 400;
   cursor: pointer;
+  user-select: none;
 `
 const Number = styled.div`
   width: 40px;
@@ -250,6 +252,15 @@ const SummaryCheckout = styled.button`
 `;
 
 const Cart = () => {
+  const [quantity, setQuantity] = useState(1);
+
+  const handleClick = (operation) => {
+    if(operation === "minus") {
+      setQuantity(prev=> prev > 1 ? prev - 1: 1 )
+    } else {
+      setQuantity(prev=> prev + 1)
+    }
+  }
   return (
     <Container>
       <Navbar/>
@@ -284,9 +295,9 @@ const Cart = () => {
               </Left>
               <Right>
               <NumberContainer>
-                <Operation>-</Operation>
-                <Number>1</Number>
-                <Operation>+</Operation>
+                <Operation onClick={() => handleClick("minus")}>-</Operation>
+                <Number>{quantity}</Number>
+                <Operation onClick={() => handleClick("plus")}>+</Operation>
               </NumberContainer>
               <Price>$ 10.00</Price>
               </Right>
@@ -306,9 +317,9 @@ const Cart = () => {
               </Left>
               <Right>
               <NumberContainer>
-                <Operation>-</Operation>
-                <Number>1</Number>
-                <Operation>+</Operation>
+                <Operation onClick={() => handleClick("minus")}>-</Operation>
+                <Number>{quantity}</Number>
+                <Operation onClick={() => handleClick("plus")}>+</Operation>
               </NumberContainer>
               <Price>$ 10.00</Price>
               </Right>
