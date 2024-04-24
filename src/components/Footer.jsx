@@ -198,11 +198,11 @@ const Footer = () => {
 				<ContactItems>
 					<ContactItem>
 						<LocationOnIcon />
-						<Span>Egypt, Cairo</Span>
+						<Span>Egypt, Alexandria</Span>
 					</ContactItem>
 					<ContactItem>
 						<PhoneIcon />
-						<Span>+249 111 8487 4</Span>
+						<Span>+20 01103632628</Span>
 					</ContactItem>
 					<ContactItem>
 						<EmailIcon />
