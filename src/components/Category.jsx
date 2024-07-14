@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { categories } from "../data";
 import { PrimaryColor } from "../Variables";
 import { Link } from "react-router-dom";
 import { mid, mobile, small } from "../responsive";
+import { useEffect, useState } from "react";
 
 const Container = styled.div`
 	width: 100%;
@@ -24,6 +24,10 @@ const Item = styled.div`
 	position: relative;
 	flex: 1;
 	cursor: pointer;
+	border: 2px solid ${PrimaryColor};
+	border-radius: 10px;
+	padding: 10px;
+	margin: 10px;
 `;
 
 const Image = styled.img`
@@ -44,7 +48,7 @@ const Title = styled.div`
 	flex-direction: column;
 	align-items: center;
 	gap: 60px;
-	color: white;
+	color: #ebebeb;
 	${mobile({ gap: "40px" })}
 	${mid({ gap: "40px" })}
 `;
@@ -54,6 +58,7 @@ const Header = styled.h2`
 	font-weight: 600;
 	letter-spacing: 1px;
 	text-align: center;
+	text-shadow: 4px 3px ${PrimaryColor};
 	${mobile({ fontSize: "24px" })}
 	${mid({ fontSize: "26px" })}
 `;
@@ -74,20 +79,35 @@ const Button = styled.button`
 `;
 
 const Category = () => {
+	const [products, setProducts] = useState([]);
+
+	useEffect(() => {
+		fetch("https://fakestoreapi.com/products")
+			.then((res) => res.json())
+			.then((result) => setProducts(result));
+	}, []);
 	return (
 		<Container>
+			<h1 style={{ color: PrimaryColor, margin: "15px 0px", fontSize: "35px" }}>
+				Categories :
+			</h1>
 			<Wrapper>
-				{categories.map((c) => (
-					<Item key={c.id}>
-						<Image src={c.img} />
-						<Title>
-							<Header>{c.title}</Header>
-							<Link to={"/productslist"} style={{ textDecoration: "none" }}>
-								<Button>Show Now</Button>
-							</Link>
-						</Title>
-					</Item>
-				))}
+				{products
+					.filter((p) => p.id === 1 || p.id === 7 || p.id === 14 || p.id === 15)
+					.map((c) => (
+						<Item key={c.id}>
+							<Image src={c.image} />
+							<Title>
+								<Header>{c.category}</Header>
+								<Link
+									to={`/productslist/${c.category}`}
+									style={{ textDecoration: "none" }}
+								>
+									<Button>Show Now</Button>
+								</Link>
+							</Title>
+						</Item>
+					))}
 			</Wrapper>
 		</Container>
 	);

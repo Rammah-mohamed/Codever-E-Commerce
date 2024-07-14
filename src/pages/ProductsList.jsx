@@ -5,6 +5,7 @@ import Products from "../components/Products";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import { mobile, small } from "../responsive";
+import { useParams } from "react-router-dom";
 
 const Container = styled.div`
 	width: 100%;
@@ -69,6 +70,7 @@ const Right = styled.div`
 `;
 
 const ProductsList = () => {
+	const param = useParams();
 	return (
 		<Container>
 			<Navbar />
@@ -78,34 +80,34 @@ const ProductsList = () => {
 				<Filter>
 					<Left>
 						<FilterText>Filter Products:</FilterText>
-						<Select name='color'>
-							<option value='White'>White</option>
-							<option value='Black'>Black</option>
-							<option value='Blue'>Blue</option>
-							<option value='Red'>Red</option>
-							<option value='Green'>Green</option>
-							<option value='Yellow'>Yellow</option>
+						<Select name="color">
+							<option value="White">White</option>
+							<option value="Black">Black</option>
+							<option value="Blue">Blue</option>
+							<option value="Red">Red</option>
+							<option value="Green">Green</option>
+							<option value="Yellow">Yellow</option>
 						</Select>
-						<Select name='size'>
-							<option value='XS'>XS</option>
-							<option value='S'>S</option>
-							<option value='M'>M</option>
-							<option value='L'>L</option>
-							<option value='XL'>XL</option>
+						<Select name="size">
+							<option value="XS">XS</option>
+							<option value="S">S</option>
+							<option value="M">M</option>
+							<option value="L">L</option>
+							<option value="XL">XL</option>
 						</Select>
 					</Left>
 					<Right>
 						<FilterText>Filter Products:</FilterText>
-						<Select name='type'>
-							<option value='Newest'>Newest</option>
-							<option value='Popular'>Popular</option>
-							<option value='Trending'>Trending</option>
-							<option value='Relevant'>Relevant</option>
+						<Select name="type">
+							<option value="Newest">Newest</option>
+							<option value="Popular">Popular</option>
+							<option value="Trending">Trending</option>
+							<option value="Relevant">Relevant</option>
 						</Select>
 					</Right>
 				</Filter>
 			</Header>
-			<Products />
+			<Products category={param.category} />
 			<Newsletter />
 			<Footer />
 		</Container>
