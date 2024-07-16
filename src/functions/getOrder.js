@@ -1,5 +1,5 @@
 const getOrderQuantity = () => {
-  const orders = JSON.parse(localStorage.getItem("appState"));
+  const orders = JSON.parse(localStorage.getItem("appState")) || [];
   let sum = 0;
   if (orders.length !== 0) {
     if (orders.length === 1) {
