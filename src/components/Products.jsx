@@ -3,7 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { useNavigate } from "react-router-dom";
-import { mid, mobile } from "../responsive";
+import { mobile, small } from "../responsive";
 import { useContext, useEffect, useState } from "react";
 import { PrimaryColor } from "../Variables";
 import { useDispatch } from "react-redux";
@@ -20,24 +20,73 @@ const Container = styled.div`
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 15px;
 `;
 
-const Icons = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+const Item = styled.div`
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 2px solid ${PrimaryColor};
+  cursor: pointer;
+  ${mobile({ flexDirection: "column" })}
+`;
+
+const ImgContainer = styled.div`
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+const Image = styled.img`
+  width: 80%;
+  height: 80%;
+  object-fit: cover;
+  ${mobile({ width: "60%", height: "60%" })}
+`;
+
+const Info = styled.div`
+  flex: 4;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+`;
+
+const Title = styled.h2`
+  max-width: 600px;
+  font-size: 50px;
+  color: ${PrimaryColor};
+  font-weight: 300;
+  letter-spacing: 2px;
+  ${mobile({ fontSize: "28px" })}
+  ${small({ fontSize: "32px" })}
+`;
+
+const Desc = styled.p`
+  max-width: 600px;
+  font-size: 18px;
+  font-weight: 400;
+  text-align: justify;
+  ${mobile({ fontSize: "16px" })}
+  ${small({ fontSize: "16px" })}
+`;
+
+const Price = styled.span`
+  font-size: 35px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  ${mobile({ fontSize: "26px" })}
+  ${small({ fontSize: "28px" })}
+`;
+
+const Icons = styled.div`
+  width: fit-content;
+  display: flex;
+  align-items: center;
   gap: 20px;
-  transition: all 1s ease;
-  opacity: 0;
   ${mobile({ gap: "14px" })}
 `;
 
@@ -48,45 +97,15 @@ const Icon = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 50px;
-  color: #555;
   padding: 10px;
   border-radius: 50%;
-  background-color: #ddd;
+  background-color: ${PrimaryColor};
+  transition: all 1s ease;
   cursor: "pointer";
-  transition: all 0.5s ease;
-
   &:hover {
-    background-color: #a2a2a2;
-    transform: scale(1.2);
+    background-color: #184055;
   }
-`;
-
-const Item = styled.div`
-  flex: 1;
-  position: relative;
-  min-width: 300px;
-  height: 400px;
-  background-color: #69a0bd;
-  cursor: pointer;
-
-  &:hover ${Icons} {
-    opacity: 1;
-  }
-  ${mid({ minWidth: "380px" })}
-`;
-
-const ImgContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-const Image = styled.img`
-  width: 90%;
-  height: 90%;
-  object-fit: cover;
+  ${mobile({ width: "40px", height: "40px" })}
 `;
 
 const Products = ({ category }) => {
@@ -159,23 +178,28 @@ const Products = ({ category }) => {
             <ImgContainer>
               <Image src={p.image} alt={p.name} />
             </ImgContainer>
-            <Icons>
-              <Icon>
-                <IconButton onClick={(e) => e.stopPropagation()}>
-                  <SearchIcon />
-                </IconButton>
-              </Icon>
-              <Icon>
-                <IconButton onClick={(e) => handleRoute(e, p)}>
-                  <ShoppingCartOutlinedIcon />
-                </IconButton>
-              </Icon>
-              <Icon>
-                <IconButton onClick={(e) => e.stopPropagation()}>
-                  <FavoriteBorderOutlinedIcon />
-                </IconButton>
-              </Icon>
-            </Icons>
+            <Info>
+              <Title>{p.title}</Title>
+              <Desc>{p.description}</Desc>
+              <Icons>
+                <Icon>
+                  <IconButton onClick={(e) => e.stopPropagation()}>
+                    <SearchIcon style={{ color: "white" }} />
+                  </IconButton>
+                </Icon>
+                <Icon>
+                  <IconButton onClick={(e) => handleRoute(e, p)}>
+                    <ShoppingCartOutlinedIcon style={{ color: "white" }} />
+                  </IconButton>
+                </Icon>
+                <Icon>
+                  <IconButton onClick={(e) => e.stopPropagation()}>
+                    <FavoriteBorderOutlinedIcon style={{ color: "white" }} />
+                  </IconButton>
+                </Icon>
+              </Icons>
+              <Price>$ {p.price}</Price>
+            </Info>
           </Item>
         ))}
       </Wrapper>

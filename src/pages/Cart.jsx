@@ -193,14 +193,14 @@ const Cart = () => {
     if (value.length !== 0) {
       if (value.length === 1) {
         sum = value
-          .map((p) => p.quantity)
-          .reduce((acc, curr) => curr * curr, 0);
+          .map((p) => [p.quantity, p.price])
+          .reduce((acc, curr) => curr[0] * curr[1], 0);
       } else {
         sum = value
           .map((p) => p.quantity * p.price)
           .reduce((acc, curr) => acc + curr);
       }
-      const total = Math.trunc(sum) + shipping - discount;
+      const total = Math.ceil(sum) + shipping - discount;
       return total;
     } else {
       return sum;

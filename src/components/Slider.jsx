@@ -69,12 +69,12 @@ const Slide = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  flex: 0.6;
+  flex: 0.5;
 `;
 
 const Image = styled.img`
   width: 70%;
-  height: 100%;
+  height: 70%;
   object-fit: cover;
 `;
 
@@ -88,6 +88,7 @@ const InfoContainer = styled.div`
 `;
 
 const Title = styled.h1`
+  color: ${PrimaryColor};
   font-size: 60px;
   letter-spacing: 1px;
   font-weight: 600;
