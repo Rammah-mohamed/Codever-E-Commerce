@@ -20,18 +20,22 @@ const Container = styled.div`
 const Wrapper = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  ${mobile({ flexDirection: "column" })}
 `;
 
 const Item = styled.div`
+  width: 48%;
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 15px;
   padding: 20px;
-  border-bottom: 2px solid ${PrimaryColor};
+  border: 2px solid ${PrimaryColor};
   cursor: pointer;
-  ${mobile({ flexDirection: "column" })}
+  ${mobile({ width: "100%" })}
+  ${small({ width: "90%" })}
 `;
 
 const ImgContainer = styled.div`
@@ -42,22 +46,22 @@ const ImgContainer = styled.div`
 `;
 
 const Image = styled.img`
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   ${mobile({ width: "60%", height: "60%" })}
 `;
 
 const Info = styled.div`
-  flex: 4;
+  flex: 3;
   display: flex;
   flex-direction: column;
   gap: 15px;
 `;
 
 const Title = styled.h2`
-  max-width: 600px;
-  font-size: 50px;
+  max-width: 500px;
+  font-size: 35px;
   color: ${PrimaryColor};
   font-weight: 300;
   letter-spacing: 2px;
@@ -66,7 +70,7 @@ const Title = styled.h2`
 `;
 
 const Desc = styled.p`
-  max-width: 600px;
+  max-width: 400px;
   font-size: 18px;
   font-weight: 400;
   text-align: justify;
@@ -75,7 +79,7 @@ const Desc = styled.p`
 `;
 
 const Price = styled.span`
-  font-size: 35px;
+  font-size: 30px;
   font-weight: 500;
   letter-spacing: 1px;
   ${mobile({ fontSize: "26px" })}
@@ -91,8 +95,8 @@ const Icons = styled.div`
 `;
 
 const Icon = styled.div`
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,8 +183,8 @@ const Products = ({ category }) => {
               <Image src={p.image} alt={p.name} />
             </ImgContainer>
             <Info>
-              <Title>{p.title}</Title>
-              <Desc>{p.description}</Desc>
+              <Title>{p.title.slice(0, 55)}...</Title>
+              <Desc>{p.description.slice(0, 250)}</Desc>
               <Icons>
                 <Icon>
                   <IconButton onClick={(e) => e.stopPropagation()}>

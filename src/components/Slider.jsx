@@ -8,13 +8,13 @@ import { mobile, small, mid } from "../responsive";
 
 const Container = styled.div`
   position: relative;
-  width: 100%;
-  height: 100vh;
+  width: 98%;
+  margin: auto;
+  height: calc(100vh - 120px);
   display: flex;
   overflow: hidden;
   ${mobile({ display: "none" })};
-  ${small({ height: "91vh", gap: "50px" })};
-  ${mid({ height: "81vh" })}
+  ${small({ gap: "50px" })};
 `;
 
 const LeftArrow = styled.div`
@@ -65,7 +65,6 @@ const Slide = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  ${small({ flexDirection: "column", gap: "50px" })}
 `;
 
 const ImgContainer = styled.div`
@@ -83,17 +82,19 @@ const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
-  ${small({ alignItems: "center" })}
+  ${small({ gap: "30px" })}
   ${mid({ gap: "40px" })}
 `;
 
 const Title = styled.h1`
+  max-width: 800px;
   color: ${PrimaryColor};
   font-size: 60px;
   letter-spacing: 1px;
   font-weight: 600;
-  ${small({ fontSize: "40px" })}
-  ${mid({ fontSize: "45px" })}
+  ${mobile({ fontSize: "26px" })}
+  ${small({ fontSize: "32px" })}
+  ${mid({ fontSize: "40px" })}
 `;
 
 const Paragraph = styled.p`
@@ -101,6 +102,8 @@ const Paragraph = styled.p`
   font-size: 20px;
   letter-spacing: 3px;
   font-weight: 400;
+  ${mobile({ fontSize: "16px" })}
+  ${small({ fontSize: "18px" })}
 `;
 
 const Button = styled.button`

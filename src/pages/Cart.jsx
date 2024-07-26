@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-  ${mobile({ padding: "20px", gap: "30px" })}
+  ${mobile({ padding: "15px", gap: "20px" })}
   ${small({ gap: "30px" })}
 `;
 
@@ -50,8 +50,8 @@ const ContinueContainer = styled.div`
 `;
 
 const Clear = styled.button`
-  width: 180px;
-  height: 60px;
+  width: 140px;
+  height: 50px;
   background-color: white;
   font-size: 18px;
   font-weight: 400;
@@ -59,7 +59,7 @@ const Clear = styled.button`
   border: 2px solid ${PrimaryColor};
   border-radius: 10px;
   cursor: pointer;
-  ${mobile({ width: "155px", height: "50px", fontSize: "16px" })}
+  ${mobile({ width: "120px", height: "40px", fontSize: "16px" })}
 `;
 
 const ShoppingNum = styled.div`
@@ -93,7 +93,7 @@ const Checkout = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  ${mobile({ width: "150px", fontSize: "16px" })};
+  ${mobile({ width: "130px", fontSize: "16px" })};
 `;
 
 const ProductContainer = styled.div`
@@ -169,6 +169,9 @@ const TotalText = styled.span`
 `;
 
 const SummaryCheckout = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 50px;
   padding: 10px;

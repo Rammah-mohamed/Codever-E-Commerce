@@ -9,6 +9,8 @@ import {
   decreamentByAmount,
 } from "../state/counterSlice";
 import ProductContext from "../context/productContext";
+import ColorContext from "../context/colorContext";
+import SizeContext from "../context/sizeContext";
 
 const Close = styled.span`
   position: absolute;
@@ -29,7 +31,6 @@ const Left = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
-  ${mobile({ flexDirection: "column" })}
 `;
 
 const ImageContainer = styled.div`
@@ -42,7 +43,7 @@ const ImageContainer = styled.div`
 const Image = styled.img`
   width: 30vh;
   object-fit: cover;
-  ${mobile({ height: "40vh" })}
+  ${mobile({ width: "90%" })}
   ${small({ width: "100%" })}
 `;
 
@@ -51,7 +52,7 @@ const Info = styled.div`
   flex: 2;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
   ${mobile({ alignSelf: "flex-start", gap: "15px" })}
   ${small({ gap: "20px" })}
 `;
@@ -72,21 +73,16 @@ const Color = styled.div`
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background-color: black;
 `;
 
 const Right = styled.div`
-  flex: 1;
   width: 100%;
   display: flex;
   align-items: flex-end;
   flex-direction: column;
-  gap: 20px;
-  ${mobile({
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginTop: "20px",
-  })}
+  gap: 10px;
+  transform: translateY(-100px);
+  ${mobile({ transform: "translateY(-80px)" })}
 `;
 
 const NumberContainer = styled.div`
@@ -129,6 +125,8 @@ const Price = styled.span`
 const CartProduct = ({ data }) => {
   const dispatch = useDispatch();
   const { setValue } = useContext(ProductContext);
+  const { color } = useContext(ColorContext);
+  const { size } = useContext(SizeContext);
 
   const handleClick = (operation) => {
     if (operation === "minus") {
@@ -157,9 +155,9 @@ const CartProduct = ({ data }) => {
   return (
     <div
       style={{
+        width: "90%",
         position: "relative",
         borderBottom: `2px solid ${PrimaryColor}`,
-        padding: "15px",
         marginBottom: "10px",
       }}
     >
@@ -178,9 +176,10 @@ const CartProduct = ({ data }) => {
             {data.id}
           </ProductText>
           <ProductText>
-            <Bold>Size: </Bold>L
+            <Bold>Size: </Bold>
+            {size}
           </ProductText>
-          <Color></Color>
+          <Color style={{ backgroundColor: color }}></Color>
         </Info>
       </Left>
       <Right>

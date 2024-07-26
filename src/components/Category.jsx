@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { PrimaryColor } from "../Variables";
 import { Link } from "react-router-dom";
-import { mid, mobile, small } from "../responsive";
+import { mid, mobile } from "../responsive";
 import { useEffect, useState } from "react";
 
 const Container = styled.div`
@@ -16,14 +16,12 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 10px;
-  ${mobile({ flexDirection: "column" })}
-  ${small({ flexDirection: "column" })}
-	${mid({ gap: "15px" })}
 `;
 
 const Item = styled.div`
+  width: 300px;
+  height: 300px;
   position: relative;
-  flex: 1;
   cursor: pointer;
   border: 2px solid ${PrimaryColor};
   border-radius: 10px;
@@ -35,8 +33,6 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* ${mobile({ height: "41vh" })} */
-  /* ${mid({ height: "60vh" })} */
 `;
 
 const Title = styled.div`
@@ -50,7 +46,7 @@ const Title = styled.div`
   align-items: center;
   gap: 60px;
   color: #ebebeb;
-  ${mobile({ gap: "40px" })}
+  ${mobile({ gap: "30px" })}
   ${mid({ gap: "40px" })}
 `;
 

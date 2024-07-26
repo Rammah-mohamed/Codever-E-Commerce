@@ -10,16 +10,19 @@ import { mobile, small } from "../responsive";
 import { useDispatch } from "react-redux";
 import { increamentByAmount } from "../state/counterSlice";
 import ProductContext from "../context/productContext";
+import ColorContext from "../context/colorContext";
+import SizeContext from "../context/sizeContext";
 
 const Container = styled.div`
   width: 100%;
 `;
 
 const Wrapper = styled.div`
+  height: calc(100vh - 110px);
   display: flex;
   gap: 40px;
   padding: 30px;
-  ${mobile({ flexDirection: "column", padding: "20px", gap: "20px" })}
+  ${mobile({ flexDirection: "column", height: "unset", gap: "25px" })}
   ${small({ gap: "30px" })}
 `;
 
@@ -32,7 +35,7 @@ const Image = styled.img`
   width: 60%;
   height: 100%;
   object-fit: cover;
-  ${mobile({ width: "90%" })}
+  ${mobile({ width: "70%" })}
   ${small({ width: "90%" })}
 `;
 
@@ -41,7 +44,7 @@ const Right = styled.div`
   display: flex;
   flex-direction: column;
   align-items: start;
-  gap: 50px;
+  gap: 30px;
   ${mobile({ gap: "15px" })}
   ${small({ flex: "2", gap: "30px" })}
 `;
@@ -174,6 +177,8 @@ const Product = () => {
     color: "black",
   });
   const [product, setProduct] = useState([]);
+  const { color, setColor } = useContext(ColorContext);
+  const { setSize } = useContext(SizeContext);
   const { value, setValue } = useContext(ProductContext);
   const dispatch = useDispatch();
   const param = useParams();
@@ -226,6 +231,14 @@ const Product = () => {
     }
   };
 
+  const handleColor = (e) => {
+    setColor(e.target.value);
+  };
+
+  const handleSize = (e) => {
+    setSize(e.target.value);
+  };
+
   return (
     <Container>
       <Navbar />
@@ -249,23 +262,38 @@ const Product = () => {
                       name="color"
                       value={"black"}
                       color="black"
+                      style={{
+                        width: color === "black" && "32px",
+                        height: color === "black" && "32px",
+                      }}
+                      onClick={(e) => handleColor(e)}
                     />
                     <Checkbox
                       type="checkbox"
                       name="color"
-                      value={"Blue"}
+                      value={"blue"}
                       color="blue"
+                      style={{
+                        width: color === "blue" && "32px",
+                        height: color === "blue" && "32px",
+                      }}
+                      onClick={(e) => handleColor(e)}
                     />
                     <Checkbox
                       type="checkbox"
                       name="color"
                       value={"grey"}
                       color="grey"
+                      style={{
+                        width: color === "grey" && "32px",
+                        height: color === "grey" && "32px",
+                      }}
+                      onClick={(e) => handleColor(e)}
                     />
                   </Colors>
                   <Size>
                     <Label>Size</Label>
-                    <Select name="size">
+                    <Select name="size" onChange={(e) => handleSize(e)}>
                       <option value="XS">XS</option>
                       <option value="S">S</option>
                       <option value="M">M</option>
