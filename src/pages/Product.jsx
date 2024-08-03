@@ -18,7 +18,7 @@ const Container = styled.div`
 `;
 
 const Wrapper = styled.div`
-  height: calc(100vh - 110px);
+  min-height: calc(100vh - 110px);
   display: flex;
   gap: 40px;
   padding: 30px;
@@ -32,8 +32,8 @@ const Left = styled.div`
 `;
 
 const Image = styled.img`
-  width: 60%;
-  height: 100%;
+  width: 50%;
+  height: 80%;
   object-fit: cover;
   ${mobile({ width: "70%" })}
   ${small({ width: "90%" })}
@@ -214,7 +214,7 @@ const Product = () => {
       });
 
       setProduct((prev) => ({ ...prev, quantity: 1 }));
-    }, 2000);
+    }, 600);
 
     if (value.length === 0) {
       setValue([product]);
@@ -249,7 +249,7 @@ const Product = () => {
         </Left>
         <Right>
           <Title>{product.title}</Title>
-          <Desc>{product.description}</Desc>
+          <Desc>{product.description?.slice(1,300)}</Desc>
           <Price>$ {Math.round(product.price * product.quantity)}</Price>
           {product.category !== "electronics" &&
             product.category !== "jewelery" && (
