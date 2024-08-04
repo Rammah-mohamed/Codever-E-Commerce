@@ -10,7 +10,7 @@ const Container = styled.div`
   position: relative;
   width: 98%;
   margin: auto;
-  height: calc(100vh - 120px);
+  min-height: calc(100vh - 120px);
   display: flex;
   overflow: hidden;
   ${mobile({ display: "none" })};
@@ -54,7 +54,7 @@ const RightArrow = styled.div`
 
 const Wrapper = styled.div`
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   transform: translateX(${(props) => props.slideindex * -100}vw);
   transition: all 1s ease;
 `;
@@ -89,17 +89,17 @@ const InfoContainer = styled.div`
 const Title = styled.h1`
   max-width: 800px;
   color: ${PrimaryColor};
-  font-size: 60px;
+  font-size: 40px;
   letter-spacing: 1px;
   font-weight: 600;
-  ${mobile({ fontSize: "26px" })}
-  ${small({ fontSize: "32px" })}
-  ${mid({ fontSize: "40px" })}
+  ${mobile({ fontSize: "24px" })}
+  ${small({ fontSize: "30px" })}
+  ${mid({ fontSize: "34px" })}
 `;
 
 const Paragraph = styled.p`
   max-width: 550px;
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 3px;
   font-weight: 400;
   ${mobile({ fontSize: "16px" })}
@@ -149,8 +149,8 @@ const Slider = () => {
                 <Image src={s.image} />
               </ImgContainer>
               <InfoContainer>
-                <Title>{s.title}</Title>
-                <Paragraph>{s.description.slice(0, 390)}</Paragraph>
+                <Title>{s.title?.slice(0,60)}</Title>
+                <Paragraph>{s.description?.slice(0, 300)}...</Paragraph>
                 <Link
                   to={`/productslist/${s.category}`}
                   style={{ textDecoration: "none" }}

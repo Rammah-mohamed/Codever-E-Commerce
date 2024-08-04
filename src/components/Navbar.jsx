@@ -6,9 +6,14 @@ import { mobile, small } from "../responsive";
 import CartBadge from "./CartBadge";
 
 const Container = styled.div`
+  position: sticky;
+  top: 40px;
+  left: 0;
   height: 70px;
   padding: 15px 30px;
+  background-color: white;
   border-bottom: 2px solid ${PrimaryColor};
+  z-index: 10;
   ${mobile({ padding: "15px" })};
 `;
 

@@ -229,8 +229,8 @@ const Cart = () => {
 
   return (
     <Container>
-      <Navbar />
       <Announcement />
+      <Navbar />
       <Wrapper>
         <Title>Your Bag</Title>
         <ShoppingContainer>

@@ -50,23 +50,23 @@ const Right = styled.div`
 `;
 
 const Title = styled.h1`
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 300;
   letter-spacing: 2px;
-  ${mobile({ fontSize: "34px" })}
-  ${small({ fontSize: "38px" })}
+  ${mobile({ fontSize: "24px" })}
+  ${small({ fontSize: "30px" })}
 `;
 
 const Desc = styled.p`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 300;
   text-align: justify;
-  ${mobile({ fontSize: "18px" })}
-  ${small({ fontSize: "18px" })}
+  ${mobile({ fontSize: "16px" })}
+  ${small({ fontSize: "16px" })}
 `;
 
 const Price = styled.span`
-  font-size: 45px;
+  font-size: 40px;
   font-weight: 300;
   letter-spacing: 1px;
   ${mobile({ fontSize: "30px" })}
@@ -88,7 +88,7 @@ const Colors = styled.div`
 `;
 
 const Label = styled.label`
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 400;
   ${mobile({ fontSize: "20px" })}
   ${small({ fontSize: "20px" })}
@@ -136,7 +136,7 @@ const NumberContainer = styled.div`
 `;
 
 const Operation = styled.span`
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 400;
   cursor: pointer;
   user-select: none;
@@ -161,7 +161,7 @@ const Cart = styled.div`
   justify-content: center;
   width: 140px;
   height: 50px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 400;
   border: 2px solid ${PrimaryColor};
   border-radius: 10px;
@@ -241,8 +241,8 @@ const Product = () => {
 
   return (
     <Container>
-      <Navbar />
       <Announcement />
+      <Navbar />
       <Wrapper>
         <Left>
           <Image src={product.image} />

@@ -3,12 +3,16 @@ import { PrimaryColor } from "../Variables";
 import { mobile } from "../responsive";
 
 const Container = styled.div`
+	position: sticky;
+	top: 0;
+	left: 0;
 	height: 40px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	background-color: ${PrimaryColor};
 	color: white;
+	z-index: 10;
 	${mobile({ height: "50px" })}
 `;
 
