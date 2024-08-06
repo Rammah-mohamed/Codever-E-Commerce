@@ -35,8 +35,8 @@ const Image = styled.img`
 	width: 50%;
 	height: 80%;
 	object-fit: cover;
-	${mobile({ width: "70%" })}
-	${small({ width: "90%" })}
+	${mobile({ width: "55%" })}
+	${small({ width: "75%" })}
 `;
 
 const Right = styled.div`
@@ -69,15 +69,15 @@ const Price = styled.span`
 	font-size: 40px;
 	font-weight: 300;
 	letter-spacing: 1px;
-	${mobile({ fontSize: "30px" })}
-	${small({ fontSize: "30px" })}
+	${mobile({ fontSize: "24px" })}
+	${small({ fontSize: "26px" })}
 `;
 
 const Items = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 60px;
-	${mobile({ gap: "30px" })};
+	${mobile({ gap: "20px" })};
 `;
 
 const Colors = styled.div`
@@ -90,8 +90,8 @@ const Colors = styled.div`
 const Label = styled.label`
 	font-size: 28px;
 	font-weight: 400;
-	${mobile({ fontSize: "20px" })}
-	${small({ fontSize: "20px" })}
+	${mobile({ fontSize: "18px" })}
+	${small({ fontSize: "18px" })}
 `;
 
 const Checkbox = styled.input`
@@ -120,7 +120,7 @@ const Select = styled.select`
 	outline: none;
 	cursor: pointer;
 	${mobile({ width: "80px", fontSize: "16px" })}
-	${small({ width: "	100px", fontSize: "16px" })}
+	${small({ width: "100px", fontSize: "16px" })}
 `;
 
 const NumberContainer = styled.div`
@@ -136,8 +136,8 @@ const Operation = styled.span`
 	font-weight: 400;
 	cursor: pointer;
 	user-select: none;
-	${mobile({ fontSize: "26px" })}
-	${small({ fontSize: "28px" })}
+	${mobile({ fontSize: "24px" })}
+	${small({ fontSize: "26px" })}
 `;
 const Number = styled.div`
 	width: 40px;
@@ -149,7 +149,7 @@ const Number = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	${mobile({ width: "35px", height: "35px", fontSize: "18px" })}
+	${mobile({ width: "30x", height: "30px", fontSize: "16px" })}
 `;
 const Cart = styled.div`
 	display: flex;

@@ -34,8 +34,8 @@ const Item = styled.div`
 	padding: 20px;
 	border: 2px solid ${PrimaryColor};
 	cursor: pointer;
-	${mobile({ width: "100%" })}
-	${small({ width: "90%" })}
+	${mobile({ flexDirection: "column", width: "100%" })}
+	${small({ flexDirection: "column", width: "100%" })}
 `;
 
 const ImgContainer = styled.div`
@@ -49,7 +49,8 @@ const Image = styled.img`
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	${mobile({ width: "60%", height: "60%" })}
+	${mobile({ width: "40%", height: "40%" })}
+	${small({ width: "60%", height: "60%" })}
 `;
 
 const Info = styled.div`
@@ -65,8 +66,8 @@ const Title = styled.h2`
 	color: ${PrimaryColor};
 	font-weight: 300;
 	letter-spacing: 2px;
-	${mobile({ fontSize: "28px" })}
-	${small({ fontSize: "32px" })}
+	${mobile({ fontSize: "24px" })}
+	${small({ fontSize: "30px" })}
 `;
 
 const Desc = styled.p`
@@ -82,8 +83,8 @@ const Price = styled.span`
 	font-size: 30px;
 	font-weight: 500;
 	letter-spacing: 1px;
-	${mobile({ fontSize: "26px" })}
-	${small({ fontSize: "28px" })}
+	${mobile({ fontSize: "24px" })}
+	${small({ fontSize: "26px" })}
 `;
 
 const Icons = styled.div`
