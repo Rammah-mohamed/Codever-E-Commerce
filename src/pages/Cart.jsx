@@ -9,6 +9,9 @@ import { useContext } from "react";
 import ProductContext from "../context/productContext";
 import { useDispatch } from "react-redux";
 import { decreamentByAmount } from "../state/counterSlice";
+// import { doc, setDoc } from "firebase/firestore";
+// import { db } from "../firebase/firebase";
+// import UserContext from "../context/userContext";
 
 const Container = styled.div`
 	width: 100%;
@@ -218,7 +221,6 @@ const Cart = () => {
 		}
 		dispatch(decreamentByAmount(ordersQuantity));
 	};
-
 	return (
 		<Container>
 			<Announcement />

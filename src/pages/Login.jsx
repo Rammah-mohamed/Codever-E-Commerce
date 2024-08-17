@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { PrimaryColor } from "../Variables";
 import { mobile, small } from "../responsive";
+import { auth } from "../firebase/firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Container = styled.div`
 	width: 100vw;
@@ -73,6 +77,9 @@ const Button = styled.button`
 	border: none;
 	border-radius: 10px;
 	cursor: pointer;
+	&:hover {
+		background-color: #266181;
+	}
 	${mobile({ width: "100px", height: "45px", fontSize: "16px" })}
 `;
 
@@ -89,16 +96,69 @@ const Link = styled.a`
 	color: black;
 `;
 
-const Login = () => {
+const Login = ({ user, setUser }) => {
+	const [error, setError] = useState(false);
+	const navigate = useNavigate();
+	const handleChange = (e) => {
+		setUser({ ...user, [e.target.name]: e.target.value });
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const validateEmail = /[A-Za-z0-9]@[a-z].[a-z]/g.test(user.email);
+		const validatePass = /\w+\d+/g.test(user.password);
+		if (validateEmail && validatePass) {
+			try {
+				await signInWithEmailAndPassword(auth, user.email, user.password);
+				navigate("/home", { state: { user } });
+			} catch (error) {
+				setError(true);
+			}
+		}
+	};
+
+	useEffect(() => {
+		const handleKeyDown = (event) => {
+			if (event.key === "Enter") {
+				handleSubmit(event);
+			}
+		};
+
+		// Attach the event listener
+		window.addEventListener("keydown", handleKeyDown);
+
+		// Clean up the event listener on component unmount
+		return () => {
+			window.removeEventListener("keydown", handleKeyDown);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
 	return (
 		<Container>
 			<Wrapper>
 				<Title>Sign In</Title>
 				<Inputs>
-					<Input type='text' placeholder='Username' />
-					<Input type='password' placeholder='Password' />
+					<Input
+						type="mail"
+						placeholder="Enter Your Email"
+						name="email"
+						value={user.email}
+						onChange={handleChange}
+					/>
+					<Input
+						type="password"
+						placeholder="Enter Your Password"
+						name="password"
+						value={user.password}
+						onChange={handleChange}
+					/>
 				</Inputs>
-				<Button>Login</Button>
+				<Button onClick={handleSubmit}>Login</Button>
+				{error && (
+					<p style={{ fontSize: "18px", color: "red" }}>
+						Fill out all fields or enter a valid email and password
+					</p>
+				)}
 				<Links>
 					<Link>Do Not You Remember The Password?</Link>
 					<Link>Create A New Account</Link>

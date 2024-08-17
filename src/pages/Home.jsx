@@ -6,18 +6,18 @@ import Products from "../components/Products";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 
-const Home = () => {
-  return (
-    <div>
-      <Announcement />
-      <Navbar />
-      <Slider />
-      <Category />
-      <Products />
-      <Newsletter />
-      <Footer />
-    </div>
-  );
+const Home = ({ currentUser }) => {
+	return (
+		<div>
+			<Announcement />
+			<Navbar currentUser={currentUser} />
+			<Slider />
+			<Category />
+			<Products />
+			<Newsletter />
+			<Footer />
+		</div>
+	);
 };
 
 export default Home;
